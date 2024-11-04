@@ -1,0 +1,90 @@
+# Series
+panda lets you create a series and add labels
+
+You can do it with the Series function
+can use list numpy array.
+you can also create it with label via dict
+
+It can hold any object type
+
+grabbing an item in series is the same way as a dict
+
+Panda numeric operations will always result in floats
+
+# Dataframes
+
+np random you can set a seed for consistent random number (for learning)
+
+data frame takes data
+    Dictionaries of 1D arrays, lists, or Series
+    Lists of dictionaries
+    2D numpy arrays
+    Another DataFrame
+then column and row lables.
+
+data frame looks like an excel table.
+
+Data frame is just a bunch of series that share the same index.
+
+to grab a column: df['ColIndex'] this is recommend so you don't get confused with the methods
+
+you can grab multi columns by doing : df[['c1','c2']]
+
+create new column
+df['new col'] = thing (can do arimetic)
+
+delete parts
+df.drop('index name')
+    defaults to axis 0 which deletes a row
+    if you want to do column you need to do axis 1
+
+if you don't have inplace=true it will return a new dataframe with the change.
+
+
+to get a row
+df.loc['row label']
+
+df.iloc[0] #index of the row. this would get the first one
+
+to get a cell
+df.loc['row','col'] 
+
+to get sets of cells
+df.loc[['row1','row2'],['col1','col2']]
+
+
+Similiar to numpy arrarys you can do bool opeartions on a dataframe.
+
+it will give a frame of true false values
+
+it can be passed into the df[expression] print  anything not true as Nan
+
+can dot the same with rows and col
+df[df['w']>0] return only the rows in w where value is > 0
+
+you can also grab another colum or columns
+df[df['w']>0]['x']
+
+python and only handles single bool values.
+
+df['w']>0 creates a series of bool values so to use and you have to do &
+or would be |
+
+you can change the row index to any colum by doing
+def.set_index('col')
+
+you can reset the index to nums by doing .reset_index() NOTE this will move the current index back to a column
+
+
+python zip will make tuples for lists. Those can be cast be put in a list or dict. For use to create dataframes
+
+helpful in making mulit index dataframes. Which are hierarchical row indexs.
+
+to grab the top row index
+df.loc['G1']
+
+to get the sub index for a single row
+df.loc['G1']['1']
+
+
+df.xs(1,level='Num') that returns sub index row 1 colum num on both parent indexs
