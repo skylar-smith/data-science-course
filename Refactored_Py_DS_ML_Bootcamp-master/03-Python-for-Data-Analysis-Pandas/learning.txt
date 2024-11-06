@@ -70,7 +70,7 @@ python and only handles single bool values.
 df['w']>0 creates a series of bool values so to use and you have to do &
 or would be |
 
-you can change the row index to any colum by doing
+you can change the row index to any column by doing
 def.set_index('col')
 
 you can reset the index to nums by doing .reset_index() NOTE this will move the current index back to a column
@@ -78,7 +78,7 @@ you can reset the index to nums by doing .reset_index() NOTE this will move the 
 
 python zip will make tuples for lists. Those can be cast be put in a list or dict. For use to create dataframes
 
-helpful in making mulit index dataframes. Which are hierarchical row indexs.
+helpful in making mulit index dataframes. Which are hierarchical row indexes.
 
 to grab the top row index
 df.loc['G1']
@@ -87,4 +87,35 @@ to get the sub index for a single row
 df.loc['G1']['1']
 
 
-df.xs(1,level='Num') that returns sub index row 1 colum num on both parent indexs
+df.xs(1,level='Num') that returns sub index row 1 column num on both parent indexes
+
+
+# Missing data
+
+to drop missing values.
+df.dropna() //drops all rows with nulls
+df.dropna(axis=1) //drops all col with nulls
+df.dropna(thresh=2) //drops all that have 2 nulls
+
+df.fillna(value='Fill Value') // can also set it to the agg functions like mean.
+
+# Group by
+byComp = df.groupBy('Company') 
+// This is not the dataframe itself. It is some other object
+// it does have the data though. You can do agg functions on it. In the example there is a
+// sales col. So byComp.mean shows the mean of the sales by company.
+byComp.describe() // This gives you all the agg data.
+
+
+#concat
+
+concat defaults to rows. Works the way you think
+if a value didn't exist you get nan. Usually happens when dataframe don't have match
+decisions.
+
+#merge
+works like SQL merges/unions
+can merge on multiple keys
+
+#Join
+like merge but not columns. It is on indexes
