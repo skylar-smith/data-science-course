@@ -1,0 +1,9 @@
+to get the plot library
+
+import matplotlib.pylot as plot
+
+#
+plot plots
+xlabel for setting x label on plot
+ylabel for setting y lable on plot
+title for setting title on plot
